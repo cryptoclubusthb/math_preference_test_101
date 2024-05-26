@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math_101</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="src/logo.png">
+    <meta property="og:title" content="math_101">
+    <meta property="og:description" content="Welcome to math_101, a quiz on various mathematical topics. Test your knowledge in algebra, calculus, and probability. Solve equations, evaluate integrals, and calculate probabilities. Challenge yourself and see how well you perform in Math_101.">
+    <meta property="og:image" content="https://github.com/cryptoclubusthb/math_101/blob/main/src/ban.jpg?raw=true">
+    <meta property="og:url" content=https://cryptoclubusthb.github.io/math_101/">
+    <link rel="canonical" href="https://cryptoclubusthb.github.io/math_101/">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAweome CDN Link for Icons-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+</head>
+<body>
+    <!-- start Quiz button -->
+    <div class="start_btn"><button>Start Math_101 Quiz </button></div>
+
+    <!-- Info Box -->
+    <div class="info_box">
+        <div class="info-title"><span>Some Rules </span></div>
+        <div class="info-list">
+            <div class="info">1. Vous aurez seulement <span>15 secondes</span> pour chaque question.</div>
+<div class="info">2. Une fois que vous avez sélectionné votre réponse, vous ne pouvez plus la modifier.</div>
+<div class="info">3. Vous ne pouvez pas sélectionner une option une fois le temps écoulé.</div>
+<div class="info">4. Vous ne pouvez pas quitter le quiz pendant que vous jouez.</div>
+<div class="info">5. Vous gagnerez des points en fonction de vos réponses correctes.</div>
+        </div>
+        <div class="buttons">
+            <button class="quit">Exit </button>
+            <button class="restart">Continue</button>
+        </div>
+    </div>
+
+    <!-- Quiz Box -->
+    <div class="quiz_box">
+        <header>
+            <div class="title">cryptoclub Math_101 Quiz</div>
+            <div class="timer">
+                <div class="time_left_txt">Time Left</div>
+                <div class="timer_sec">15</div>
+            </div>
+            <div class="time_line"></div>
+        </header>
+        <section>
+            <div class="que_text">
+                <!-- Here I've inserted question from JavaScript -->
+            </div>
+            <div class="option_list">
+                <!-- Here I've inserted options from JavaScript -->
+            </div>
+        </section>
+
+        <!-- footer of Quiz Box -->
+        <footer>
+            <div class="total_que">
+                <!-- Here I've inserted Question Count Number from JavaScript -->
+            </div>
+            <button class="next_btn">Qst suivante</button>
+        </footer>
+    </div>
+
+    <!-- Result Box -->
+    <div class="result_box">
+        <div class="icon">
+            <i class="fas fa-crown"></i>
+        </div>
+        <div class="complete_text">Vous avez terminé le quiz !</div>
+        <div class="score_text">
+            <!-- Here I've inserted Score Result from JavaScript -->
+        </div>
+        <div class="buttons">
+            <button class="restart">Rejouer le quiz</button>
+            <button class="quit">Quitter le quiz</button>   
+        </div>
+    </div>
+
+    <!-- Inside this JavaScript file I've inserted Questions and Options only -->
+    <script src="js/questions.js"></script>
+
+    <!-- Inside this JavaScript file I've coded all Quiz Codes -->
+    <script src="js/script.js"></script>
+
+</body>
+</html>
