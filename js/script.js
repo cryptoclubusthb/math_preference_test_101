@@ -22,13 +22,13 @@ exit_btn.onclick = () => {
 continue_btn.onclick = () => {
     info_box.classList.remove("activeInfo"); // Hide info box
     quiz_box.classList.add("activeQuiz"); // Show quiz box
-    showQuestions(0); // Calling showQuestions function
+    showQuetions(0); // Calling showQestions function
     queCounter(1); // Passing 1 parameter to queCounter
-    startTimer(15); // Calling startTimer function
+    startTimer(90); // Calling startTimer function
     startTimerLine(0); // Calling startTimerLine function
 }
 
-let timeValue = 15;
+let timeValue = 90;
 let que_count = 0;
 let que_numb = 1;
 let userScore = 0;
@@ -36,27 +36,18 @@ let counter;
 let counterLine;
 let widthValue = 0;
 
-// Initializing category scores
-let algebraScore = 0;
-let analysisScore = 0;
-let probaStatScore = 0;
-
 const restart_quiz = result_box.querySelector(".buttons .restart");
 const quit_quiz = result_box.querySelector(".buttons .quit");
 
-// Adding event listeners for restart and quit buttons
 restart_quiz.onclick = () => {
     quiz_box.classList.add("activeQuiz"); // Show quiz box
     result_box.classList.remove("activeResult"); // Hide result box
-    timeValue = 15;
+    timeValue = 90;
     que_count = 0;
     que_numb = 1;
     userScore = 0;
-    algebraScore = 0;
-    analysisScore = 0;
-    probaStatScore = 0;
     widthValue = 0;
-    showQuestions(que_count); // Calling showQuestions function
+    showQuetions(que_count); // Calling showQestions function
     queCounter(que_numb); // Passing que_numb value to queCounter
     clearInterval(counter); // Clear counter
     clearInterval(counterLine); // Clear counterLine
@@ -73,12 +64,11 @@ quit_quiz.onclick = () => {
 const next_btn = document.querySelector("footer .next_btn");
 const bottom_ques_counter = document.querySelector("footer .total_que");
 
-// Adding event listener for the next question button
 next_btn.onclick = () => {
     if (que_count < questions.length - 1) { // If question count is less than total question length
         que_count++; // Increment the que_count value
         que_numb++; // Increment the que_numb value
-        showQuestions(que_count); // Calling showQuestions function
+        showQuetions(que_count); // Calling showQestions function
         queCounter(que_numb); // Passing que_numb value to queCounter
         clearInterval(counter); // Clear counter
         clearInterval(counterLine); // Clear counterLine
@@ -93,130 +83,107 @@ next_btn.onclick = () => {
     }
 }
 
-// Getting questions and options from array
-function showQuestions(index) {
-    const que_text = document.querySelector(".que_text");
+// Global object to store the number of times each option is selected
+var optionSelectionCount = {
+    option1: 0,
+    option2: 0,
+    option3: 0,
+    option4: 0
+};
 
-    // Creating a new span and div tag for question and option and passing the value using array index
+function showQuetions(index) {
+    const que_text = document.querySelector(".que_text");
     let que_tag = '<span>' + questions[index].numb + ". " + questions[index].question + '</span>';
     let option_tag = '<div class="option"><span>' + questions[index].options[0] + '</span></div>'
         + '<div class="option"><span>' + questions[index].options[1] + '</span></div>'
-        + '<div class="option"><span>' + questions[index].options[2] + '</span></div>';
-    que_text.innerHTML = que_tag; // Adding new span tag inside que_tag
-    option_list.innerHTML = option_tag; // Adding new div tag inside option_tag
+        + '<div class="option"><span>' + questions[index].options[2] + '</span></div>'
+        + '<div class="option"><span>' + questions[index].options[3] + '</span></div>';
+    que_text.innerHTML = que_tag;
+    option_list.innerHTML = option_tag;
 
     const option = option_list.querySelectorAll(".option");
 
-    // Set onclick attribute to all available options
-    for (let i = 0; i < option.length; i++) {
+    for (i = 0; i < option.length; i++) {
         option[i].setAttribute("onclick", "optionSelected(this)");
     }
 }
 
-// Creating the new div tags which for icons
 let tickIconTag = '<div class="icon tick"><i class="fas fa-check"></i></div>';
-let crossIconTag = '<div class="icon cross"><i class="fas fa-times"></i></div>';
 
-// If user clicked on option
 function optionSelected(answer) {
-    clearInterval(counter); // Clear counter
-    clearInterval(counterLine); // Clear counterLine
-    let userAns = answer.textContent; // Getting user selected option
-    let correcAns = questions[que_count].answer; // Getting correct answer from array
-    const allOptions = option_list.children.length; // Getting all option items
+    clearInterval(counter);
+    clearInterval(counterLine);
+    let userAns = answer.textContent;
+    userScore++; // Incrementing user score
+    optionSelectionCount["option" + (questions[que_count].options.indexOf(userAns) + 1)]++; // Incrementing count for the selected option
 
-    if (userAns === correcAns) { // Si la réponse de l'utilisateur est correcte
-        userScore += 1; // Upgrading score value with 1
-
-        // Mise à jour des scores par catégorie
-        if (correcAns.startsWith("A")) probaStatScore += 1;
-        else if (correcAns.startsWith("B")) algebraScore += 1;
-        else if (correcAns.startsWith("C")) analysisScore += 1;
-
-        answer.classList.add("correct"); // Adding green color to correct selected option
-        answer.insertAdjacentHTML("beforeend", tickIconTag); // Adding tick icon to correct selected option
-        console.log("Correct Answer");
-        console.log("Your correct answers = " + userScore);
-        console.log(`Scores: Algèbre - ${algebraScore}, Analyse - ${analysisScore}, Probabilité et Statistiques - ${probaStatScore}`);
-    } else {
-        // Code pour gérer les réponses incorrectes (si nécessaire)
+    answer.classList.add("correct");
+    answer.insertAdjacentHTML("beforeend", tickIconTag);
+    
+    for (i = 0; i < option_list.children.length; i++) {
+        option_list.children[i].classList.add("disabled");
     }
-
-    for (let i = 0; i < allOptions; i++) {
-        option_list.children[i].classList.add("disabled"); // Once user select an option then disable all options
-    }
-    next_btn.classList.add("show"); // Show the next button if user selected any option
+    next_btn.classList.add("show");
 }
 
-// Displaying the result
 function showResult() {
-    info_box.classList.remove("activeInfo"); // Hide info box
-    quiz_box.classList.remove("activeQuiz"); // Hide quiz box
-    result_box.classList.add("activeResult"); // Show result box
+    info_box.classList.remove("activeInfo");
+    quiz_box.classList.remove("activeQuiz");
+    result_box.classList.add("activeResult");
     const scoreText = result_box.querySelector(".score_text");
 
-    // Afficher les scores par catégorie
-    scoreText.innerHTML = `
-        <p>Scores par catégorie :</p>
-        <p>Algèbre : ${algebraScore}</p>
-        <p>Analyse : ${analysisScore}</p>
-        <p>Probabilité et Statistiques : ${probaStatScore}</p>
-    `;
+    let scoreTag = "<span>Option Selection Count</span><ul>";
+    scoreTag += `<li>Analyse : ${optionSelectionCount.option1}</li>`;
+    scoreTag += `<li>Algebre : ${optionSelectionCount.option2}</li>`;
+    scoreTag += `<li>Proba_Stat : ${optionSelectionCount.option3}</li>`;
+    scoreTag += `<li> Recherche Opérationnelle : ${optionSelectionCount.option4}</li>`;
+    scoreTag += "</ul>";
 
-    // Afficher la recommandation finale
-    let finalResult;
-    if (algebraScore >= Math.max(analysisScore, probaStatScore)) {
-        finalResult = results.B;
-    } else if (analysisScore >= Math.max(algebraScore, probaStatScore)) {
-        finalResult = results.C;
-    } else {
-        finalResult = results.A;
-    }
-    scoreText.insertAdjacentHTML("beforeend", `<p>${finalResult}</p>`);
+    scoreText.innerHTML = scoreTag;
 }
 
 function startTimer(time) {
     counter = setInterval(timer, 1000);
     function timer() {
-        timeCount.textContent = time; // Changing the value of timeCount with time value
-        time--; // Decrement the time value
-        if (time < 9) { // If timer is less than 9
+        timeCount.textContent = time;
+        time--;
+        if (time < 9) {
             let addZero = timeCount.textContent;
-            timeCount.textContent = "0" + addZero; // Add a 0 before time value
+            timeCount.textContent = "0" + addZero;
         }
-        if (time < 0) { // If timer is less than 0
-            clearInterval(counter); // Clear counter
-            timeText.textContent = "Time Off"; // Change the time text to time off
-            const allOptions = option_list.children.length; // Getting all option items
-            let correcAns = questions[que_count].answer; // Getting correct answer from array
-            for (let i = 0; i < allOptions; i++) {
-                if (option_list.children[i].textContent == correcAns) { // If there is an option which is matched to an array answer
-                    option_list.children[i].setAttribute("class", "option correct"); // Adding green color to matched option
-                    option_list.children[i].insertAdjacentHTML("beforeend", tickIconTag); // Adding tick icon to matched option
+        if (time < 0) {
+            clearInterval(counter);
+            timeText.textContent = "Time Off";
+            const allOptions = option_list.children.length;
+            let correcAns = questions[que_count].answer;
+            for (i = 0; i < allOptions; i++) {
+                if (option_list.children[i].textContent == correcAns) {
+                    option_list.children[i].setAttribute("class", "option correct");
+                    option_list.children[i].insertAdjacentHTML("beforeend", tickIconTag);
                     console.log("Time Off: Auto selected correct answer.");
                 }
             }
-            for (let i = 0; i < allOptions; i++) {
-                option_list.children[i].classList.add("disabled"); // Once user select an option then disable all options
+            for (i = 0; i < allOptions; i++) {
+                option_list.children[i].classList.add("disabled");
             }
-            next_btn.classList.add("show"); // Show the next button if user selected any option
+            next_btn.classList.add("show");
         }
     }
 }
 
 function startTimerLine(time) {
-    counterLine = setInterval(timer, 29);
+    counterLine = setInterval(timer, 233);
     function timer() {
-        time += 1; // Upgrading time value with 1
-        time_line.style.width = time + "px"; // Increasing width of time_line with px by time value
-        if (time > 549) { // If time value is greater than 549
-            clearInterval(counterLine); // Clear counterLine
+        time += 1;
+        time_line.style.width = time + "px";
+        if (time > 549) {
+            clearInterval(counterLine);
         }
     }
 }
 
 function queCounter(index) {
-    // Creating a new span tag and passing the question number and total question
     let totalQueCounTag = '<span><p>' + index + '</p> of <p>' + questions.length + '</p> Questions</span>';
-    bottom_ques_counter.innerHTML = totalQueCounTag; // Adding new span tag inside bottom_ques_counter
+    bottom_ques_counter.innerHTML = totalQueCounTag;
 }
+
