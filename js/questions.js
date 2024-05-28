@@ -1,78 +1,123 @@
 let questions = [
   {
-    numb: 1,
-    question: "Quel type de problèmes aimez-vous résoudre ?",
-    options: [
-      "A. Calculer les probabilités d'événements complexes et analyser des données.",
-      "B. Travailler avec des structures algébriques comme les groupes, les anneaux et les corps.",
-      "C. Étudier les limites, les dérivées, les intégrales et les séries."
+    "numb": 1,
+    "question":
+      "When solving a mathematical problem, which aspect do you prefer?",
+    "options": [
+      "A. Analyzing functions and their behaviors",
+      "B. Working with algebraic structures such as groups and rings",
+      "C. Dealing with data and probabilities",
+      "D. Optimizing processes and systems"
     ],
-    category: "Quiz d'Orientation en Mathématiques"
+    "category": "Mathematical Preferences"
   },
   {
-    numb: 2,
-    question: "Quelle partie des mathématiques trouvez-vous la plus intuitive ?",
-    options: [
-      "A. Interpréter des graphiques, des distributions et des données statistiques.",
-      "B. Manipuler des équations, des matrices et des structures abstraites.",
-      "C. Analyser des fonctions et des comportements de séries et de suites."
+    "numb": 2,
+    "question":
+      "What type of course do you like the most?",
+    "options": [
+      "A. Advanced calculus and analysis",
+      "B. Number theory and algebra",
+      "C. Statistics and probability theories",
+      "D. Programming and problem-solving methods"
     ],
-    category: "Quiz d'Orientation en Mathématiques"
+    "category": "Course Preferences"
   },
   {
-    numb: 3,
-    question: "Quel domaine vous semble le plus pertinent pour vos aspirations professionnelles ?",
-    options: [
-      "A. Travail dans des domaines comme la finance, l'assurance, ou la data science.",
-      "B. Recherche mathématique pure ou enseignement supérieur en mathématiques.",
-      "C. Ingénierie, physique théorique, ou toute carrière nécessitant une analyse approfondie des fonctions."
+    "numb": 3,
+    "question":
+      "Which subject are you most passionate about?",
+    "options": [
+      "A. Theorems and rigorous proofs in analysis",
+      "B. Cryptography and data security",
+      "C. Modeling uncertainties and risks",
+      "D. Optimization and efficiency of systems"
     ],
-    category: "Quiz d'Orientation en Mathématiques"
+    "category": "Subject Passion"
   },
   {
-    numb: 4,
-    question: "Quelle matière avez-vous le plus appréciée en L1 ?",
-    options: [
-      "A. Probabilité et Statistiques.",
-      "B. Algèbre Linéaire et Structures Algébriques.",
-      "C. Analyse et Calcul Différentiel."
+    "numb": 4,
+    "question":
+      "What type of project do you prefer to undertake?",
+    "options": [
+      "A. A complex demonstration of a theorem",
+      "B. A cryptography algorithm",
+      "C. A statistical study on real data",
+      "D. An optimization model for a company"
     ],
-    category: "Quiz d'Orientation en Mathématiques"
+    "category": "Project Preferences"
   },
   {
-    numb: 5,
-    question: "Dans quel type de cours vous sentez-vous le plus à l'aise ?",
-    options: [
-      "A. Cours avec beaucoup d'applications pratiques et de modélisations.",
-      "B. Cours axés sur la théorie pure et les preuves rigoureuses.",
-      "C. Cours qui impliquent des concepts fondamentaux de calcul et des applications analytiques."
+    "numb": 5,
+    "question":
+      "What is your strength?",
+    "options": [
+      "A. Rigor and precision in demonstrations",
+      "B. Manipulation of algebraic structures",
+      "C. Interpretation of data and results",
+      "D. Practical problem-solving"
     ],
-    category: "Quiz d'Orientation en Mathématiques"
+    "category": "Strengths"
   },
   {
-    numb: 6,
-    question: "Quel type d'exercice préférez-vous ?",
-    options: [
-      "A. Résoudre des problèmes de probabilité, analyser des jeux de données, faire des statistiques.",
-      "B. Prouver des théorèmes, travailler sur des démonstrations abstraites et manipuler des structures algébriques.",
-      "C. Résoudre des équations différentielles, calculer des intégrales, et étudier la convergence des séries."
+    "numb": 6,
+    "question":
+      "Which mathematics book do you prefer?",
+    "options": [
+      "A. 'Calculus' by Michael Spivak",
+      "B. 'Introduction to Algebra' by Serge Lang",
+      "C. 'Probability and Statistics' by Morris H. DeGroot",
+      "D. 'Operations Research: An Introduction' by Taha H. A."
     ],
-    category: "Quiz d'Orientation en Mathématiques"
+    "category": "Book Preferences"
   },
   {
-    numb: 7,
-    question: "Quel sujet de recherche vous attire le plus ?",
-    options: [
-      "A. Modélisation des phénomènes aléatoires et analyse statistique des données.",
-      "B. Théorie des groupes, des anneaux et des corps.",
-      "C. Théorie des fonctions, équations différentielles et analyse complexe."
+    "numb": 7,
+    "question":
+      "Which work environment appeals to you the most?",
+    "options": [
+      "A. A theoretical mathematics research laboratory",
+      "B. A cybersecurity company",
+      "C. A data analytics company or an insurance company",
+      "D. An industrial company or a technological startup"
     ],
-    category: "Quiz d'Orientation en Mathématiques"
+    "category": "Work Environment Preferences"
+  },
+  {
+    "numb": 8,
+    "question":
+      "What tools do you prefer to use?",
+    "options": [
+      "A. Abstract mathematical tools and theorems",
+      "B. Algebraic systems and cryptography software",
+      "C. Statistical software and data analysis",
+      "D. Simulation and optimization software"
+    ],
+    "category": "Tool Preferences"
+  },
+  {
+    "numb": 9,
+    "question":
+      "What type of career are you considering?",
+    "options": [
+      "A. Researcher or mathematics professor",
+      "B. Cryptographer or computer security expert",
+      "C. Statistician or data analyst",
+      "D. Operations research analyst or optimization consultant"
+    ],
+    "category": "Career Consideration"
+  },
+  {
+    "numb": 10,
+    "question":
+      "Which phrase describes you best?",
+    "options": [
+      "A. 'I enjoy understanding the theoretical foundations of mathematics.'",
+      "B. 'I am passionate about codes and information security.'",
+      "C. 'I like analyzing data to draw useful conclusions.'",
+      "D. 'I enjoy optimizing processes to improve efficiency.'"
+    ],
+    "category": "Self-Description"
   }
+  
 ];
-
-let results = {
-  "A": "Vous semblez avoir une préférence pour la Probabilité et Statistiques (Probastat). Ce domaine est idéal pour ceux qui aiment travailler avec des données, des probabilités, et qui envisagent une carrière dans des secteurs comme la finance, l'assurance, ou la data science.",
-  "B": "Vous avez une affinité pour l'Algèbre. Ce domaine est parfait pour ceux qui aiment les mathématiques théoriques, les structures abstraites, et qui envisagent une carrière en recherche mathématique ou en enseignement supérieur.",
-  "C": "Vous êtes attiré par l'Analyse. Ce domaine est idéal pour ceux qui aiment les concepts fondamentaux de calcul, les fonctions, et qui envisagent des carrières en ingénierie, en physique théorique, ou toute carrière nécessitant une analyse mathématique approfondie."
-};
